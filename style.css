@@ -1,0 +1,262 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #f4eaf6, #e8d8ed);
+    color: #555;
+}
+
+/* CONTENEDOR */
+.contenedor {
+    width: 380px;
+    margin: 50px auto;
+    padding: 35px;
+    background-color: white;
+    border: 1px solid #dfcce3;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(107, 68, 120, 0.15);
+}
+
+/* CÍRCULO DEL LOGO */
+.logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 15px;
+
+    background-color: #8b5c96;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 0 5px 12px rgba(139, 92, 150, 0.25);
+}
+
+/* ÍCONO DEL MUÑEQUITO */
+.icono-usuario {
+    position: relative;
+    width: 48px;
+    height: 52px;
+}
+
+/* Cabeza */
+.cabeza {
+    position: absolute;
+
+    width: 20px;
+    height: 20px;
+
+    background-color: white;
+    border-radius: 50%;
+
+    top: 2px;
+    left: 14px;
+}
+
+/* Cuerpo */
+.cuerpo {
+    position: absolute;
+
+    width: 40px;
+    height: 24px;
+
+    background-color: white;
+
+    border-radius: 25px 25px 8px 8px;
+
+    bottom: 2px;
+    left: 4px;
+}
+
+/* TÍTULO */
+h1 {
+    color: #70477b;
+    font-size: 26px;
+    margin: 8px 0;
+    font-weight: normal;
+}
+
+.subtitulo {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 25px;
+}
+
+/* TIPOS DE USUARIO */
+.tipos {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.tipo {
+    flex: 1;
+
+    padding: 12px 5px;
+
+    border: 1px solid #d8c3dc;
+    border-radius: 8px;
+
+    background-color: #fcf9fd;
+    color: #8b5c96;
+
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.tipo:hover {
+    background-color: #f1e5f4;
+}
+
+.tipo.activo {
+    background-color: #8b5c96;
+    color: white;
+    border-color: #8b5c96;
+}
+
+/* TIPO SELECCIONADO */
+#tipoSeleccionado {
+    color: #8b5c96;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+/* CAMPOS */
+.campo {
+    position: relative;
+    margin-bottom: 18px;
+}
+
+.campo span {
+    position: absolute;
+
+    left: 13px;
+    top: 11px;
+
+    color: #8b5c96;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+
+    padding: 12px 12px 12px 40px;
+
+    border: 1px solid #d8c3dc;
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    background-color: #fcf9fd;
+}
+
+input:focus {
+    outline: none;
+
+    border-color: #a878b2;
+
+    box-shadow: 0 0 0 2px rgba(168, 120, 178, 0.12);
+}
+
+/* BOTÓN */
+button {
+    width: 100%;
+
+    padding: 12px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: #8b5c96;
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background-color: #70477b;
+}
+
+/* REGISTRO */
+.registro {
+    margin-top: 20px;
+
+    color: #888;
+    font-size: 13px;
+}
+
+.registro a {
+    color: #8b5c96;
+
+    text-decoration: none;
+
+    font-weight: bold;
+}
+
+.registro a:hover {
+    text-decoration: underline;
+}
+
+/* VOLVER */
+.volver {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    color: #8b5c96;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.volver:hover {
+    text-decoration: underline;
+}
+
+/* PIE */
+.pie {
+    margin-top: 25px;
+    padding-top: 15px;
+
+    border-top: 1px solid #eee;
+
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* CELULARES */
+@media (max-width: 600px) {
+
+    .contenedor {
+        width: 88%;
+
+        margin: 35px auto;
+
+        padding: 28px;
+    }
+
+    .tipos {
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+}

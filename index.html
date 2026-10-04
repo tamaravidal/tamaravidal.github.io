@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Gestión Ciudadana</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #f4eaf6,
+                #e8d8ed
+            );
+
+            color: #555;
+        }
+
+
+        /* ========================= */
+        /* CONTENEDOR */
+        /* ========================= */
+
+        .contenedor {
+
+            width: 380px;
+
+            margin: 50px auto;
+
+            padding: 35px;
+
+            background-color: white;
+
+            border: 1px solid #dfcce3;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px
+                rgba(107, 68, 120, 0.15);
+        }
+
+
+        /* ========================= */
+        /* LOGO */
+        /* ========================= */
+
+        .logo {
+
+            width: 80px;
+
+            height: 80px;
+
+            margin: 0 auto 15px;
+
+            background-color: #8b5c96;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow:
+                0 5px 12px
+                rgba(139, 92, 150, 0.25);
+        }
+
+
+        /* ========================= */
+        /* MUÑEQUITO */
+        /* ========================= */
+
+        .icono-usuario {
+
+            position: relative;
+
+            width: 48px;
+
+            height: 52px;
+        }
+
+
+        .cabeza {
+
+            position: absolute;
+
+            width: 20px;
+
+            height: 20px;
+
+            background-color: white;
+
+            border-radius: 50%;
+
+            top: 2px;
+
+            left: 14px;
+        }
+
+
+        .cuerpo {
+
+            position: absolute;
+
+            width: 40px;
+
+            height: 24px;
+
+            background-color: white;
+
+            border-radius:
+                25px 25px 8px 8px;
+
+            bottom: 2px;
+
+            left: 4px;
+        }
+
+
+        /* ========================= */
+        /* TÍTULO */
+        /* ========================= */
+
+        h1 {
+
+            color: #70477b;
+
+            font-size: 26px;
+
+            margin: 8px 0;
+
+            font-weight: normal;
+        }
+
+
+        .subtitulo {
+
+            color: #888;
+
+            font-size: 14px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* ========================= */
+        /* TIPOS DE USUARIO */
+        /* ========================= */
+
+        .tipos {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .tipo {
+
+            flex: 1;
+
+            padding: 12px 5px;
+
+            border: 1px solid #d8c3dc;
+
+            border-radius: 8px;
+
+            background-color: #fcf9fd;
+
+            color: #8b5c96;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .tipo:hover {
+
+            background-color: #f1e5f4;
+        }
+
+
+        .tipo.activo {
+
+            background-color: #8b5c96;
+
+            color: white;
+
+            border-color: #8b5c96;
+        }
+
+
+        /* ========================= */
+        /* TIPO SELECCIONADO */
+        /* ========================= */
+
+        #tipoSeleccionado {
+
+            color: #8b5c96;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* ========================= */
+        /* CAMPOS */
+        /* ========================= */
+
+        .campo {
+
+            position: relative;
+
+            margin-bottom: 18px;
+        }
+
+
+        .campo span {
+
+            position: absolute;
+
+            left: 13px;
+
+            top: 11px;
+
+            color: #8b5c96;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding:
+                12px
+                12px
+                12px
+                40px;
+
+            border: 1px solid #d8c3dc;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            background-color: #fcf9fd;
+        }
+
+
+        input:focus {
+
+            outline: none;
+
+            border-color: #a878b2;
+
+            box-shadow:
+                0 0 0 2px
+                rgba(168, 120, 178, 0.12);
+        }
+
+
+        /* ========================= */
+        /* BOTÓN */
+        /* ========================= */
+
+        button {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background-color: #8b5c96;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        button:hover {
+
+            background-color: #70477b;
+        }
+
+
+        /* ========================= */
+        /* MENSAJE */
+        /* ========================= */
+
+        #mensaje {
+
+            margin-top: 15px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+        }
+
+
+        .exito {
+
+            color: #4d8a5a;
+        }
+
+
+        .error {
+
+            color: #b34b4b;
+        }
+
+
+        /* ========================= */
+        /* REGISTRO */
+        /* ========================= */
+
+        .registro {
+
+            margin-top: 20px;
+
+            color: #888;
+
+            font-size: 13px;
+        }
+
+
+        .registro a {
+
+            color: #8b5c96;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        .registro a:hover {
+
+            text-decoration: underline;
+        }
+
+
+        /* ========================= */
+        /* PIE */
+        /* ========================= */
+
+        .pie {
+
+            margin-top: 25px;
+
+            padding-top: 15px;
+
+            border-top: 1px solid #eee;
+
+            color: #aaa;
+
+            font-size: 12px;
+        }
+
+
+        /* ========================= */
+        /* CELULARES */
+        /* ========================= */
+
+        @media (max-width: 600px) {
+
+            .contenedor {
+
+                width: 88%;
+
+                margin: 35px auto;
+
+                padding: 28px;
+            }
+
+
+            .tipos {
+
+                flex-direction: column;
+            }
+
+
+            h1 {
+
+                font-size: 23px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="contenedor">
+
+
+        <!-- ========================= -->
+        <!-- LOGO -->
+        <!-- ========================= -->
+
+        <div class="logo">
+
+            <div class="icono-usuario">
+
+                <div class="cabeza"></div>
+
+                <div class="cuerpo"></div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- TÍTULO -->
+        <!-- ========================= -->
+
+        <h1>
+
+            Gestión Ciudadana
+
+        </h1>
+
+
+        <p class="subtitulo">
+
+            Selecciona tu tipo de acceso
+
+        </p>
+
+
+        <!-- ========================= -->
+        <!-- TIPOS DE USUARIO -->
+        <!-- ========================= -->
+
+        <div class="tipos">
+
+
+            <div
+                class="tipo activo"
+                onclick="seleccionarTipo(
+                    'Administrador',
+                    this
+                )">
+
+                Administrador
+
+            </div>
+
+
+            <div
+                class="tipo"
+                onclick="seleccionarTipo(
+                    'COPACI',
+                    this
+                )">
+
+                COPACI
+
+            </div>
+
+
+            <div
+                class="tipo"
+                onclick="seleccionarTipo(
+                    'Ciudadano',
+                    this
+                )">
+
+                Ciudadano
+
+            </div>
+
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- TIPO SELECCIONADO -->
+        <!-- ========================= -->
+
+        <div id="tipoSeleccionado">
+
+            Acceso de Administrador
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- FORMULARIO -->
+        <!-- ========================= -->
+
+        <form onsubmit="iniciarSesion(event)">
+
+
+            <!-- USUARIO -->
+
+            <div class="campo">
+
+                <span>●</span>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    placeholder="Usuario administrador"
+                    required>
+
+            </div>
+
+
+            <!-- CONTRASEÑA -->
+
+            <div class="campo">
+
+                <span>●</span>
+
+                <input
+                    type="password"
+                    id="contrasena"
+                    placeholder="Contraseña"
+                    required>
+
+            </div>
+
+
+            <!-- BOTÓN -->
+
+            <button type="submit">
+
+                Iniciar sesión
+
+            </button>
+
+
+        </form>
+
+
+        <!-- ========================= -->
+        <!-- MENSAJE -->
+        <!-- ========================= -->
+
+        <div id="mensaje"></div>
+
+
+        <!-- ========================= -->
+        <!-- REGISTRO -->
+        <!-- ========================= -->
+
+        <div
+            class="registro"
+            id="registro"
+            style="display: none;">
+
+            ¿No tienes una cuenta?
+
+            <a href="#">
+
+                Registrarse
+
+            </a>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- PIE -->
+        <!-- ========================= -->
+
+        <div class="pie">
+
+            Sistema de Gestión Ciudadana
+
+        </div>
+
+
+    </div>
+
+
+    <script>
+
+
+        /* ============================= */
+        /* TIPO ACTUAL */
+        /* ============================= */
+
+        let tipoUsuario =
+            "Administrador";
+
+
+        /* ============================= */
+        /* CAMBIAR TIPO */
+        /* ============================= */
+
+        function seleccionarTipo(
+            tipo,
+            elemento
+        ) {
+
+
+            tipoUsuario = tipo;
+
+
+            /* Quitar selección */
+
+            const botones =
+                document.querySelectorAll(
+                    ".tipo"
+                );
+
+
+            botones.forEach(
+                function(boton) {
+
+                    boton.classList.remove(
+                        "activo"
+                    );
+
+                }
+            );
+
+
+            /* Activar botón */
+
+            elemento.classList.add(
+                "activo"
+            );
+
+
+            /* Cambiar texto */
+
+            document.getElementById(
+                "tipoSeleccionado"
+            ).textContent =
+                "Acceso de " + tipo;
+
+
+            /* Obtener elementos */
+
+            const usuario =
+                document.getElementById(
+                    "usuario"
+                );
+
+
+            const registro =
+                document.getElementById(
+                    "registro"
+                );
+
+
+            /* ========================= */
+            /* ADMINISTRADOR */
+            /* ========================= */
+
+            if (
+                tipo === "Administrador"
+            ) {
+
+                usuario.placeholder =
+                    "Usuario administrador";
+
+                registro.style.display =
+                    "none";
+
+            }
+
+
+            /* ========================= */
+            /* COPACI */
+            /* ========================= */
+
+            else if (
+                tipo === "COPACI"
+            ) {
+
+                usuario.placeholder =
+                    "Usuario COPACI";
+
+                registro.style.display =
+                    "none";
+
+            }
+
+
+            /* ========================= */
+            /* CIUDADANO */
+            /* ========================= */
+
+            else if (
+                tipo === "Ciudadano"
+            ) {
+
+                usuario.placeholder =
+                    "Usuario o correo";
+
+                registro.style.display =
+                    "block";
+
+            }
+
+
+            /* Limpiar campos */
+
+            document.getElementById(
+                "usuario"
+            ).value = "";
+
+
+            document.getElementById(
+                "contrasena"
+            ).value = "";
+
+
+            /* Limpiar mensaje */
+
+            document.getElementById(
+                "mensaje"
+            ).textContent = "";
+
+        }
+
+
+        /* ============================= */
+        /* INICIAR SESIÓN */
+        /* ============================= */
+
+        function iniciarSesion(event) {
+
+
+            event.preventDefault();
+
+
+            /* Obtener datos */
+
+            const usuario =
+                document.getElementById(
+                    "usuario"
+                ).value.trim();
+
+
+            const contrasena =
+                document.getElementById(
+                    "contrasena"
+                ).value.trim();
+
+
+            /* Variables */
+
+            let usuarioCorrecto = "";
+
+            let contrasenaCorrecta = "";
+
+            let pagina = "";
+
+
+            /* ========================= */
+            /* ADMINISTRADOR */
+            /* ========================= */
+
+            if (
+                tipoUsuario ===
+                "Administrador"
+            ) {
+
+                usuarioCorrecto =
+                    "admin";
+
+                contrasenaCorrecta =
+                    "123";
+
+                pagina =
+                    "admin.html";
+
+            }
+
+
+            /* ========================= */
+            /* COPACI */
+            /* ========================= */
+
+            else if (
+                tipoUsuario ===
+                "COPACI"
+            ) {
+
+                usuarioCorrecto =
+                    "copaci";
+
+                contrasenaCorrecta =
+                    "456";
+
+                pagina =
+                    "copaci.html";
+
+            }
+
+
+            /* ========================= */
+            /* CIUDADANO */
+            /* ========================= */
+
+            else if (
+                tipoUsuario ===
+                "Ciudadano"
+            ) {
+
+                usuarioCorrecto =
+                    "ciudadano";
+
+                contrasenaCorrecta =
+                    "789";
+
+                pagina =
+                    "ciudadano.html";
+
+            }
+
+
+            /* Obtener mensaje */
+
+            const mensaje =
+                document.getElementById(
+                    "mensaje"
+                );
+
+
+            /* ========================= */
+            /* COMPROBAR */
+            /* ========================= */
+
+            if (
+
+                usuario === usuarioCorrecto &&
+
+                contrasena === contrasenaCorrecta
+
+            ) {
+
+
+                mensaje.textContent =
+                    "✓ Inicio de sesión correcto";
+
+
+                mensaje.className =
+                    "exito";
+
+
+                /* ===================== */
+                /* REDIRECCIÓN */
+                /* ===================== */
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            pagina;
+
+                    },
+                    300
+                );
+
+
+            }
+
+
+            else {
+
+
+                mensaje.textContent =
+                    "✕ Usuario o contraseña incorrectos.";
+
+
+                mensaje.className =
+                    "error";
+
+            }
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

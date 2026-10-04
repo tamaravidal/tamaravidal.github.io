@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Panel de COPACI</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #f4eaf6,
+                #e8d8ed
+            );
+
+            color: #555;
+
+        }
+
+
+        /* ========================= */
+        /* ENCABEZADO */
+        /* ========================= */
+
+        header {
+
+            background-color: #70477b;
+
+            color: white;
+
+            padding: 20px;
+
+            text-align: center;
+
+            box-shadow:
+                0 4px 12px
+                rgba(107, 68, 120, 0.20);
+
+        }
+
+
+        header h1 {
+
+            margin: 0;
+
+            font-size: 28px;
+
+            font-weight: normal;
+
+        }
+
+
+        header p {
+
+            margin: 7px 0 0;
+
+            font-size: 14px;
+
+            color: #eadfee;
+
+        }
+
+
+        /* ========================= */
+        /* CONTENEDOR */
+        /* ========================= */
+
+        .contenedor {
+
+            width: 90%;
+
+            max-width: 900px;
+
+            margin: 35px auto;
+
+        }
+
+
+        /* ========================= */
+        /* BIENVENIDA */
+        /* ========================= */
+
+        .bienvenida {
+
+            background-color: white;
+
+            border: 1px solid #dfcce3;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 5px 18px
+                rgba(107, 68, 120, 0.10);
+
+        }
+
+
+        .bienvenida h2 {
+
+            margin: 0 0 8px;
+
+            color: #70477b;
+
+            font-size: 23px;
+
+            font-weight: normal;
+
+        }
+
+
+        .bienvenida p {
+
+            margin: 0;
+
+            color: #888;
+
+            font-size: 14px;
+
+        }
+
+
+        /* ========================= */
+        /* OPCIONES */
+        /* ========================= */
+
+        .opciones {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 18px;
+
+        }
+
+
+        .tarjeta {
+
+            background-color: white;
+
+            border: 1px solid #dfcce3;
+
+            border-radius: 15px;
+
+            padding: 25px;
+
+            text-decoration: none;
+
+            color: #555;
+
+            box-shadow:
+                0 5px 18px
+                rgba(107, 68, 120, 0.10);
+
+            transition: 0.2s;
+
+        }
+
+
+        .tarjeta:hover {
+
+            transform: translateY(-3px);
+
+            border-color: #b486bd;
+
+            box-shadow:
+                0 8px 22px
+                rgba(107, 68, 120, 0.18);
+
+        }
+
+
+        /* ========================= */
+        /* ICONOS */
+        /* ========================= */
+
+        .icono {
+
+            width: 55px;
+
+            height: 55px;
+
+            background-color: #eee2f0;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 25px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .tarjeta h3 {
+
+            margin: 0 0 8px;
+
+            color: #70477b;
+
+            font-size: 18px;
+
+        }
+
+
+        .tarjeta p {
+
+            margin: 0;
+
+            color: #888;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* ========================= */
+        /* CERRAR SESIÓN */
+        /* ========================= */
+
+        .cerrar {
+
+            display: block;
+
+            width: 220px;
+
+            margin: 30px auto;
+
+            padding: 12px;
+
+            background-color: #8b5c96;
+
+            color: white;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-size: 15px;
+
+            transition: 0.2s;
+
+        }
+
+
+        .cerrar:hover {
+
+            background-color: #70477b;
+
+        }
+
+
+        /* ========================= */
+        /* PIE */
+        /* ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 20px;
+
+            color: #aaa;
+
+            font-size: 12px;
+
+        }
+
+
+        /* ========================= */
+        /* CELULARES */
+        /* ========================= */
+
+        @media (max-width: 600px) {
+
+            .contenedor {
+
+                width: 88%;
+
+                margin: 25px auto;
+
+            }
+
+
+            .opciones {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            header h1 {
+
+                font-size: 24px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================= -->
+    <!-- ENCABEZADO -->
+    <!-- ========================= -->
+
+    <header>
+
+        <h1>
+            Gestión Ciudadana
+        </h1>
+
+        <p>
+            Panel de COPACI
+        </p>
+
+    </header>
+
+
+    <!-- ========================= -->
+    <!-- CONTENIDO -->
+    <!-- ========================= -->
+
+    <main class="contenedor">
+
+
+        <!-- BIENVENIDA -->
+
+        <section class="bienvenida">
+
+            <h2>
+                Bienvenido, COPACI
+            </h2>
+
+            <p>
+                Desde este panel puedes gestionar
+                las actividades y solicitudes de la comunidad.
+            </p>
+
+        </section>
+
+
+        <!-- OPCIONES -->
+
+        <section class="opciones">
+
+
+            <!-- SOLICITUDES -->
+
+            <a href="#" class="tarjeta">
+
+                <div class="icono">
+                    📋
+                </div>
+
+                <h3>
+                    Solicitudes
+                </h3>
+
+                <p>
+                    Consultar y dar seguimiento a las
+                    solicitudes de los ciudadanos.
+                </p>
+
+            </a>
+
+
+            <!-- REPORTES -->
+
+            <a href="#" class="tarjeta">
+
+                <div class="icono">
+                    📊
+                </div>
+
+                <h3>
+                    Reportes
+                </h3>
+
+                <p>
+                    Consultar los reportes y problemas
+                    registrados en la comunidad.
+                </p>
+
+            </a>
+
+
+            <!-- CIUDADANOS -->
+
+            <a href="#" class="tarjeta">
+
+                <div class="icono">
+                    👥
+                </div>
+
+                <h3>
+                    Ciudadanos
+                </h3>
+
+                <p>
+                    Consultar la información de los
+                    ciudadanos registrados.
+                </p>
+
+            </a>
+
+
+            <!-- ACTIVIDADES -->
+
+            <a href="#" class="tarjeta">
+
+                <div class="icono">
+                    📅
+                </div>
+
+                <h3>
+                    Actividades
+                </h3>
+
+                <p>
+                    Consultar y organizar actividades
+                    para la comunidad.
+                </p>
+
+            </a>
+
+
+            <!-- AVISOS -->
+
+            <a href="#" class="tarjeta">
+
+                <div class="icono">
+                    📢
+                </div>
+
+                <h3>
+                    Avisos
+                </h3>
+
+                <p>
+                    Publicar y consultar avisos
+                    importantes para la comunidad.
+                </p>
+
+            </a>
+
+
+            <!-- PERFIL -->
+
+            <a href="#" class="tarjeta">
+
+                <div class="icono">
+                    👤
+                </div>
+
+                <h3>
+                    Mi perfil
+                </h3>
+
+                <p>
+                    Consultar y modificar la información
+                    de la cuenta COPACI.
+                </p>
+
+            </a>
+
+
+        </section>
+
+
+        <!-- CERRAR SESIÓN -->
+
+        <a
+            href="index.html"
+            class="cerrar">
+
+            Cerrar sesión
+
+        </a>
+
+
+    </main>
+
+
+    <!-- PIE -->
+
+    <footer>
+
+        Sistema de Gestión Ciudadana
+
+    </footer>
+
+
+</body>
+
+</html>
